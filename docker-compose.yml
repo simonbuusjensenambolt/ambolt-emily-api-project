@@ -12,6 +12,8 @@ services:
       - .:/workspace:cached
       - ${MOUNT1}:/workspace/paralenz-image-classifier/
       - ${MOUNT2}:/workspace/ATKI/
+      - ${MOUNT3}:/workspace/MAFA Dataset/
+      - ${MOUNT4}:/workspace/train-images/
     runtime: ${RUNTIME}
     environment:
       - NVIDIA_VISIBLE_DEVICES=${NVIDIA_VISIBLE_DEVICES}
