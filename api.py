@@ -36,7 +36,7 @@ def healthcheck():
 @app.get('/api')
 def hello():
     import os
-    files = os.listdir('paralenz-image-classifier')
+    files = os.listdir('MAFA Dataset')
     s = (f'The {config["project_name"]} API is running (uptime: {get_uptime()}) files at mounted drive: {[str(f) for f in files]}')
     return s
 
