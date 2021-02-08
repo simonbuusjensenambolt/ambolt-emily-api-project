@@ -1,0 +1,27 @@
+version: "3"
+services:
+  emily-ambolt-emily-api-project-75rxjb-prod:
+    image: emily-ambolt-emily-api-project-75rxjb-prod
+    container_name: emily-ambolt-emily-api-project-75rxjb-prod
+    command: python3 ${MAIN}
+    restart: always
+    ports:
+      - ${CONTAINER_PORT}:${HOST_PORT}
+    networks:
+      - emily-ambolt-emily-api-project-75rxjb-prod-network
+    build:
+      context: .
+      dockerfile: ./.devcontainer/Dockerfile
+    volumes:
+      - .:/workspace:cached
+      - ${MOUNT1}:/workspace/paralenz-image-classifier/
+      - ${MOUNT2}:/workspace/ATKI/
+    runtime: ${RUNTIME}
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=${NVIDIA_VISIBLE_DEVICES}
+      - NVIDIA_DRIVER_CAPABILITIES=${NVIDIA_DRIVER_CAPABILITIES}
+    ipc: ${IPC}
+networks:
+  emily-ambolt-emily-api-project-75rxjb-prod-network:
+    name: emily-ambolt-emily-api-project-75rxjb-prod-network
+    driver: bridge
