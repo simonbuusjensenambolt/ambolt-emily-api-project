@@ -35,7 +35,10 @@ def healthcheck():
 
 @app.get('/api')
 def hello():
-    return f'The {config["project_name"]} API is running (uptime: {get_uptime()})'
+    import os
+    files = os.listdir('paralenz-image-classifier')
+    s = (f'The {config["project_name"]} API is running (uptime: {get_uptime()}) files at mounted drive: {[str(f) for f in files]}')
+    return s
 
 app.add_middleware(
     CORSMiddleware,
